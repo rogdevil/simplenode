@@ -1,7 +1,7 @@
-# Production Dockerfile for Node.js
+ # Production Dockerfile for Node.js
 FROM node:14 as build
 WORKDIR /app
-COPY  /app
+COPY . /app
 RUN npm install
 RUN npm run build
 

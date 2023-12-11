@@ -1,20 +1,11 @@
-FROM node:18
-
-# Create app directory
-WORKDIR /usr/src/app
-
-# Install app dependencies
-# A wildcard is used to ensure both package.json AND package-lock.json are copied
-# where available (npm@5+)
-COPY package*.json ./
-
+# Production Dockerfile for Node.js
+FROM node:14 as build
+WORKDIR /app
+COPY  /app
 RUN npm install
-# If you are building your code for production
-# RUN npm ci --only=production
+RUN npm run build
 
-# Bundle app source
-COPY . .
-
-EXPOSE 8000
-
-CMD [ "node", "index.js" ]
+FROM nginx:alpine
+COPY --from=build /app/dist /usr/share/nginx/html
+EXPOSE 8000 3000
+CMD node index.js

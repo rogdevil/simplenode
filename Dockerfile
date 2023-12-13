@@ -6,4 +6,4 @@ RUN npm install
 
 FROM nginx:alpine
 EXPOSE 8000 3000
-CMD node index.js
+CMD node index1.js

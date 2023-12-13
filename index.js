@@ -4,7 +4,7 @@ const app = express();
 app.use(express.json());
 
 app.get("/health", (req, res) => {
-    res.send("BND HealthEndpoint");
+    res.send("BND HealthEndpoint hello");
 });
 
 app.get("/", (req, res) => {
